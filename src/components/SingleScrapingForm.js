@@ -30,7 +30,7 @@ const SingleScrapingForm = () => {
               </div>
 
               <button
-                className="btn btn-info rounded-pill py-2 btn-block"
+                className="btn btn-info rounded-pill py-2 my-5 btn-block"
                 id="checkout_btn"
                 style={{ color: "white" }}
                 onClick={() => console.log("checkValidOnCheckOut()")}

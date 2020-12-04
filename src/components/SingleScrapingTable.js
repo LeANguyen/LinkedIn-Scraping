@@ -51,41 +51,47 @@ const SingleScrapingTable = ({ data }) => {
           Scrape Profile
         </div>
         <div className="p-4">
-          <form>
-            <div className="form-group">
+          <div className="row">
+            <div className="col-12">
               <strong className="text-muted">Profile's Name:</strong>
-              <div className="row">
-                <div className="col-lg-10">
-                  <div class="input-group mt-2 mb-4">
-                    <div class="input-group-append">
-                      <span class="input-group-text rounded-left">
-                        <i class="fa fa-search"></i>
-                      </span>
+            </div>
+            <div className="col-12">
+              <form>
+                <div className="form-group">
+                  <div className="row">
+                    <div className="col-lg-10">
+                      <div class="input-group mt-2 mb-4">
+                        <div class="input-group-append">
+                          <span class="input-group-text rounded-left">
+                            <i class="fa fa-search"></i>
+                          </span>
+                        </div>
+                        <input
+                          type="text"
+                          class="form-control"
+                          placeholder="Profile's Name"
+                          aria-label="from"
+                          aria-describedby="from"
+                        ></input>
+                      </div>
                     </div>
-                    <input
-                      type="text"
-                      class="form-control"
-                      placeholder="Profile's Name"
-                      aria-label="from"
-                      aria-describedby="from"
-                    ></input>
+
+                    <div className="col-lg-2">
+                      <button
+                        className="btn btn-info rounded mt-2 btn-block"
+                        id="checkout_btn"
+                        style={{ color: "white" }}
+                        onClick={() => console.log("checkValidOnCheckOut()")}
+                      >
+                        Search
+                      </button>
+                    </div>
                   </div>
                 </div>
-
-                <div className="col-lg-2">
-                  {/* <strong className="text-muted">Profile's URL:</strong> */}
-                  <button
-                    className="btn btn-info rounded py-2 btn-block m-1"
-                    id="checkout_btn"
-                    style={{ color: "white" }}
-                    onClick={() => console.log("checkValidOnCheckOut()")}
-                  >
-                    Search
-                  </button>
-                </div>
-              </div>
+              </form>
             </div>
-          </form>
+            <div className="col-2"></div>
+          </div>
         </div>
         <div className="table-responsive">
           {data.length === 0 && (
