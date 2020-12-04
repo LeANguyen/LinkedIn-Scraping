@@ -8,7 +8,7 @@ function App() {
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit the MAN FUCK YOU GITHUB WHy you so complicated AND YOU GIVE ME
-          SEIZURE
+          SEIZURE AND I am depressed
           <code>src/App.js</code> and save to reload.
         </p>
         <a
