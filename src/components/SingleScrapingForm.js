@@ -1,120 +1,49 @@
 import React from "react";
-import SingleScrapingTable from "./SingleScrapingTable";
 import logo from "../assets/logo.png";
+import FormTextInput from "./form/FormTextInput";
+import FormButton from "./form/FormButton";
+import DownloadLink from "./DownloadLink";
+import FormHeader from "./form/FormHeader";
+import Form from "./form/Form";
 
 const SingleScrapingForm = () => {
   return (
     <div className="row py-5 p-4 bg-white rounded shadow-lg">
       <div className="col-lg-6">
-        <div className="bg-dark text-white rounded-pill px-4 py-3 font-weight-bold">
-          Scrape Single Profile
-        </div>
-        <div className="p-4">
-          <form>
-            <div className="form-group">
-              <strong className="text-muted">Profile's URL:</strong>
-
-              <div class="input-group mt-2 mb-4">
-                <div class="input-group-append">
-                  <span class="input-group-text rounded-left">
-                    <i class="fa fa-search"></i>
-                  </span>
-                </div>
-                <input
-                  type="text"
-                  class="form-control"
-                  placeholder="Profile's URL"
-                  aria-label="from"
-                  aria-describedby="from"
-                ></input>
-              </div>
-
-              <button
-                className="btn btn-info rounded-pill py-2 my-5 btn-block"
-                id="checkout_btn"
-                style={{ color: "white" }}
-                onClick={() => console.log("checkValidOnCheckOut()")}
-              >
-                Scrape
-              </button>
-              <p className="text-center text-muted my-2 font-weight-bold">
-                Your file is ready
-              </p>
-              <a href={logo} download>
-                <p className="text-center font-weight-bold">
-                  Click to download
-                </p>
-              </a>
-            </div>
-          </form>
-        </div>
+        <FormHeader _iconName="user" _text="Single Scraping"></FormHeader>
+        <Form>
+          <FormTextInput
+            _iconName="search"
+            _placeHolder="Profile's URL"
+          ></FormTextInput>
+          <FormButton
+            _text="Scrape"
+            _onClick={() => console.log("checkValidOnCheckOut()")}
+          ></FormButton>
+          <DownloadLink _href={logo}></DownloadLink>
+        </Form>
       </div>
 
       <div className="col-lg-6">
-        <div className="bg-dark text-white rounded-pill px-4 py-3 font-weight-bold">
-          Scrape Multiple Profile
-        </div>
-        <div className="p-4">
-          <form>
-            <div className="form-group">
-              <strong className="text-muted">Query Command:</strong>
-
-              <div class="input-group mt-2 mb-4">
-                <div class="input-group-append">
-                  <span class="input-group-text rounded-left">
-                    <i class="fa fa-search"></i>
-                  </span>
-                </div>
-                <input
-                  type="text"
-                  class="form-control"
-                  placeholder="Query Command"
-                  aria-label="from"
-                  aria-describedby="from"
-                ></input>
-              </div>
-
-              <strong className="text-muted">Quantity:</strong>
-              <div class="input-group mt-2 mb-4">
-                <div class="input-group-append">
-                  <span class="input-group-text rounded-left">
-                    <i class="fa fa-users"></i>
-                  </span>
-                </div>
-                <input
-                  type="number"
-                  id="quantity_input${data[i].item_id}"
-                  oninput="this.value = Math.abs(this.value)"
-                  class="form-control"
-                  step="1"
-                  max="9999"
-                  min="1"
-                  onfocusin="quantity_focus(this.value)"
-                  onchange="quantity_edit(${data[i].item_id})"
-                ></input>
-              </div>
-
-              <button
-                className="btn btn-info rounded-pill py-2 btn-block"
-                id="checkout_btn"
-                style={{ color: "white" }}
-                onClick={() => console.log("checkValidOnCheckOut()")}
-              >
-                Scrape
-              </button>
-
-              <p className="text-center text-muted my-2 font-weight-bold">
-                Your file is ready
-              </p>
-
-              <a href={logo} download>
-                <p className="text-center font-weight-bold">
-                  Click to download
-                </p>
-              </a>
-            </div>
-          </form>
-        </div>
+        <FormHeader _iconName="users" _text="Multiple Scraping"></FormHeader>
+        <form>
+          <div className="form-group p-4">
+            <FormTextInput
+              _iconName="search"
+              _placeHolder="Query Command"
+            ></FormTextInput>
+            <FormTextInput
+              _iconName="users"
+              _placeHolder="Quantity"
+              _inputType="number"
+            ></FormTextInput>
+            <FormButton
+              _text="Scrape"
+              _onClick={() => console.log("checkValidOnCheckOut()")}
+            ></FormButton>
+            <DownloadLink _href={logo}></DownloadLink>
+          </div>
+        </form>
       </div>
     </div>
   );

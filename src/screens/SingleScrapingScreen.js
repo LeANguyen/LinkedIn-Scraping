@@ -1,7 +1,7 @@
 import React from "react";
-import SingleScrapingTable from "../components/SingleScrapingTable";
 import SingleScrapingForm from "../components/SingleScrapingForm";
 import Screen from "../components/Screen";
+import SingleSearchForm from "../components/SingleSearchForm";
 
 const SingleScrapingScreen = () => {
   const data = [
@@ -96,7 +96,9 @@ const SingleScrapingScreen = () => {
           <div className="container">
             <SingleScrapingForm></SingleScrapingForm>
             <div className="my-5">
-              <SingleScrapingTable data={data}></SingleScrapingTable>
+              {/* <SingleScrapingTable data={data}></SingleScrapingTable> */}
+              {/* <Table _data={data}></Table> */}
+              <SingleSearchForm _data={data}></SingleSearchForm>
             </div>
           </div>
         </div>
