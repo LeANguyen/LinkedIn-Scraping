@@ -1,7 +1,6 @@
 import logo from "./logo.svg";
 import "./App.css";
-import MultipleScrapingScreen from "./screens/MultipleScrapingScreen";
-import SingleScrapingScreen from "./screens/SingleScrapingScreen";
+import ScrapeProfileScreen from "./screens/ScrapeProfileScreen";
 
 function App() {
   // return (
@@ -25,7 +24,7 @@ function App() {
   //   </div>
   // );
   // return <MultipleScrapingScreen></MultipleScrapingScreen>;
-  return <SingleScrapingScreen></SingleScrapingScreen>;
+  return <ScrapeProfileScreen></ScrapeProfileScreen>;
 }
 
 export default App;

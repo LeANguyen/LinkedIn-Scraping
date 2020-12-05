@@ -17,8 +17,8 @@ const Header = () => {
       </button>
 
       <div className="collapse navbar-collapse" id="navbarTogglerDemo03">
-        <ul className="navbar-nav mr-auto my-1 mt-lg-0">
-          <li className="nav-item ml-2 mr-4">
+        <ul className="navbar-nav mr-auto my-lg-1 my-2">
+          <li className="nav-item px-2 px-lg-5">
             <img src={logo} height="40" />
           </li>
 

@@ -1,9 +1,9 @@
 import React from "react";
-import SingleScrapingForm from "../components/SingleScrapingForm";
+import ScrapeProfileForm from "../components/ScrapeProfileForm";
 import Screen from "../components/Screen";
-import SingleSearchForm from "../components/SingleSearchForm";
+import SearchProfileForm from "../components/SearchProfileForm";
 
-const SingleScrapingScreen = () => {
+const ScrapeProfileScreen = () => {
   const data = [
     {
       key: 1,
@@ -87,24 +87,19 @@ const SingleScrapingScreen = () => {
         "https://www.linkedin.com/pulse/how-easy-scraping-data-from-linkedin-profiles-david-craven/"
     }
   ];
+
   return (
     <Screen>
-      <div className="px-4 px-lg-0">
-        <div className="container text-white py-5 text-center"></div>
-
-        <div className="pb-5">
-          <div className="container">
-            <SingleScrapingForm></SingleScrapingForm>
-            <div className="my-5">
-              {/* <SingleScrapingTable data={data}></SingleScrapingTable> */}
-              {/* <Table _data={data}></Table> */}
-              <SingleSearchForm _data={data}></SingleSearchForm>
-            </div>
-          </div>
+      <div className="py-lg-5">
+        <div className="m-lg-5 my-5">
+          <ScrapeProfileForm></ScrapeProfileForm>
+        </div>
+        <div className="m-lg-5 my-5">
+          <SearchProfileForm _data={data}></SearchProfileForm>
         </div>
       </div>
     </Screen>
   );
 };
 
-export default SingleScrapingScreen;
+export default ScrapeProfileScreen;
