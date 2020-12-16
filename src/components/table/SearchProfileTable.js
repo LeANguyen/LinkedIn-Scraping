@@ -11,7 +11,7 @@ const SearchProfileTable = ({ _data, _headers = ["Name", "URL", ""] }) => {
     <div>
       <div className="table-responsive">
         {_data.length === 0 && (
-          <p className="text-center m-5">There is no data to be displayed!</p>
+          <p className="text-center my-4">There is no data to be displayed!</p>
         )}
         {_data.length !== 0 && (
           <>
