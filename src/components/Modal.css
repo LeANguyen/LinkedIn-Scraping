@@ -1,0 +1,24 @@
+/* .modal {
+  overflow: auto !important;
+} */
+
+/* .modal-dialog {
+  overflow-y: initial !important;
+} */
+
+.modal-body {
+  overflow-y: auto;
+}
+
+.modal-single {
+  height: 73vh;
+}
+
+.modal-multiple {
+  height: 65vh;
+}
+
+/* body.modal-open {
+  overflow: hidden !important;
+  position: fixed;
+} */

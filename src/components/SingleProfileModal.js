@@ -1,7 +1,8 @@
 import React from "react";
 
-const TextFileDownloadModal = ({
+const SingleProfileModal = ({
   _id,
+  _title,
   _downloadContent,
   _downloadUrl,
   _downloadName
@@ -9,7 +10,7 @@ const TextFileDownloadModal = ({
   return (
     <div
       id={_id}
-      class="modal fade"
+      class="modal fade overflow-auto"
       tabindex="-1"
       role="dialog"
       aria-labelledby="myLargeModalLabel"
@@ -18,7 +19,7 @@ const TextFileDownloadModal = ({
       <div class="modal-dialog mw-100 w-75">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title">Multiple Scraping Result</h5>
+            <h5 class="modal-title">{_title}</h5>
             <button
               type="button"
               class="close"
@@ -28,7 +29,9 @@ const TextFileDownloadModal = ({
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <div class="modal-body">{_downloadContent}</div>
+
+          <div class="modal-body modal-single">{_downloadContent}</div>
+
           <div class="modal-footer">
             <a
               className="btn btn-success"
@@ -51,4 +54,4 @@ const TextFileDownloadModal = ({
   );
 };
 
-export default TextFileDownloadModal;
+export default SingleProfileModal;

@@ -4,7 +4,7 @@ import SearchProfileTableItem from "./SearchProfileTableItem";
 import usePagination from "./usePagination";
 import Pagination from "./Pagination";
 
-const SearchProfileTable = ({ _data, _headers = ["Name", "URL", ""] }) => {
+const Table = ({ _data, _headers = ["Name", "URL", ""] }) => {
   const pagination = usePagination(_data);
 
   return (
@@ -40,4 +40,4 @@ const SearchProfileTable = ({ _data, _headers = ["Name", "URL", ""] }) => {
   );
 };
 
-export default SearchProfileTable;
+export default Table;

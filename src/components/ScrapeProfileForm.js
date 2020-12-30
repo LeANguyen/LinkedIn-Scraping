@@ -1,13 +1,17 @@
 import React, { useState } from "react";
-import logo from "../assets/logo.png";
 import FormTextInput from "./form/FormTextInput";
 import FormButton from "./form/FormButton";
-import DownloadLink from "./DownloadLink";
 import FormHeader from "./form/FormHeader";
 import useScrapeApi from "../api/useScrapeApi";
 import useApi from "../hooks/useApi";
 import $ from "jquery";
-import TextFileDownloadModal from "./TextFileDownloadModal";
+import MultipleProfileModal from "./MultipleProfileModal";
+import Container from "../components/Container";
+import SingleProfileModal from "./SingleProfileModal";
+import ModalList from "./ModalList";
+import dummyData from "./dummyData";
+import FormDownloadButton from "./form/FormDownloadButton";
+import FormText from "./form/FormText";
 
 const ScrapeProfileForm = () => {
   const [singleUrl, setSingleUrl] = useState();
@@ -19,164 +23,191 @@ const ScrapeProfileForm = () => {
   const scrapeMultipleProfileApi = useApi(scrapeApi.scrapeMultipleProfile);
 
   return (
-    <div className="row p-4 bg-white rounded shadow-lg">
-      <div className="col-lg-6">
-        <FormHeader _iconName="user" _text="Single Scraping"></FormHeader>
-        <form>
-          <FormTextInput
-            _iconName="search"
-            _placeHolder="Profile's URL"
-            _onChange={event => setSingleUrl(event.target.value)}
-          ></FormTextInput>
-          {scrapeSingleProfileApi.isLoading && (
-            <p className="text-info text-center">Scraping...Please wait...</p>
-          )}
-          {scrapeSingleProfileApi.error && (
-            <p className="text-danger text-center">
-              There is a connection error!
-            </p>
-          )}
-          {scrapeSingleProfileApi.success &&
-            scrapeSingleProfileApi.data === null && (
-              <p className="text-danger text-center">
-                The tool failed to scrape any data!
-              </p>
+    <Container>
+      <div className="row">
+        <div className="col-lg-6">
+          <FormHeader _iconName="user" _text="Single Scraping"></FormHeader>
+          <form>
+            <FormTextInput
+              _iconName="search"
+              _placeHolder="Profile's URL"
+              _onChange={event => setSingleUrl(event.target.value)}
+            ></FormTextInput>
+            {scrapeSingleProfileApi.isLoading && (
+              <FormText
+                _text="Scraping...Please Wait..."
+                _variant="info"
+              ></FormText>
             )}
-        </form>
-
-        <FormButton
-          _text="Scrape"
-          _onClick={() => scrapeSingleProfileApi.request(singleUrl)}
-          _disabled={scrapeSingleProfileApi.isLoading}
-        ></FormButton>
-
-        {scrapeSingleProfileApi.success &&
-          scrapeSingleProfileApi.data !== null && (
-            <>
-              <DownloadLink
-                _href={scrapeSingleProfileApi.downloadUrl}
-                _downnload="single"
-              ></DownloadLink>
-              <FormButton
+            {scrapeSingleProfileApi.error && (
+              <FormText
+                _text="There is a connection error!!!"
                 _variant="danger"
-                _onClick={() => {
-                  $("#singleModal").modal("show");
-                }}
-                _text="Click here to view"
-              ></FormButton>
-            </>
-          )}
+              ></FormText>
+            )}
+            {scrapeSingleProfileApi.success &&
+              scrapeSingleProfileApi.data === null && (
+                <FormText
+                  _text="The tool failed to scrape any data!!!"
+                  _variant="danger"
+                ></FormText>
+              )}
+          </form>
 
-        {/* <>
-          <DownloadLink
-            _href={scrapeSingleProfileApi.downloadUrl}
-            _downnload="single"
-          ></DownloadLink>
           <FormButton
-            _variant="danger"
-            _onClick={() => {
-              $("#singleModal").modal("show");
-            }}
-            _text="Click here to view"
+            _variant="info"
+            _text="Scrape"
+            _onClick={() => scrapeSingleProfileApi.request(singleUrl)}
+            _disabled={scrapeSingleProfileApi.isLoading}
           ></FormButton>
-        </> */}
-      </div>
 
-      <TextFileDownloadModal
-        _id="singleModal"
-        _downloadUrl={scrapeSingleProfileApi.downloadUrl}
-        _downloadName={"single"}
-        _downloadContent={
-          <pre>{JSON.stringify(scrapeSingleProfileApi.data, null, "\t")}</pre>
-        }
-      ></TextFileDownloadModal>
-
-      <div className="col-lg-6">
-        <FormHeader _iconName="users" _text="Multiple Scraping"></FormHeader>
-        <form>
-          <FormTextInput
-            _iconName="search"
-            _placeHolder="Query Command"
-            _onChange={event => setMultipleQuery(event.target.value)}
-          ></FormTextInput>
-          <FormTextInput
-            _iconName="users"
-            _placeHolder="Quantity"
-            _inputType="number"
-            _onChange={event => setMultipleQuantity(event.target.value)}
-          ></FormTextInput>
-          {scrapeMultipleProfileApi.isLoading && (
-            <p className="text-info text-center">Scraping...Please wait...</p>
-          )}
-          {scrapeMultipleProfileApi.error && (
-            <p className="text-danger text-center">
-              There is a connection error!
-            </p>
-          )}
-          {scrapeMultipleProfileApi.success &&
-            scrapeMultipleProfileApi.data === null && (
+          {scrapeSingleProfileApi.success &&
+            scrapeSingleProfileApi.data !== null && (
               <>
-                <p className="text-danger text-center">
-                  The tool failed to scrape any data!
-                </p>
-                <p className="text-danger text-center">
-                  Make sure your input is valid.
-                </p>
+                <FormText
+                  _variant="muted"
+                  _text="Scraping Completed!!!"
+                ></FormText>
+                <div className="row">
+                  <div className="col-6">
+                    <FormDownloadButton
+                      _variant="success"
+                      _href={scrapeSingleProfileApi.downloadUrl}
+                      _downnload="single"
+                      _text="Download JSON"
+                    ></FormDownloadButton>
+                  </div>
+                  <div className="col-6">
+                    <FormButton
+                      _variant="danger"
+                      _onClick={() => {
+                        $("#singleModal").modal("show");
+                      }}
+                      _text="View"
+                    ></FormButton>
+                  </div>
+                </div>
               </>
             )}
-        </form>
+        </div>
 
-        <FormButton
-          _text="Scrape"
-          _onClick={() =>
-            scrapeMultipleProfileApi.request(multipleQuery, multipleQuantity)
+        <SingleProfileModal
+          _id="singleModal"
+          _title="Single Scraping Result"
+          _downloadUrl={scrapeSingleProfileApi.downloadUrl}
+          _downloadName={"single"}
+          _downloadContent={
+            <pre>{JSON.stringify(scrapeSingleProfileApi.data, null, "\t")}</pre>
           }
-          _disabled={scrapeMultipleProfileApi.isLoading}
-        ></FormButton>
+        ></SingleProfileModal>
 
-        {scrapeMultipleProfileApi.success &&
-          scrapeMultipleProfileApi.data !== null && (
-            <>
-              <DownloadLink
-                _href={scrapeSingleProfileApi.downloadUrl}
-                _downnload="single"
-              ></DownloadLink>
-              <FormButton
+        <div className="col-lg-6">
+          <FormHeader _iconName="users" _text="Multiple Scraping"></FormHeader>
+          <form>
+            <FormTextInput
+              _iconName="search"
+              _placeHolder="Query Command"
+              _onChange={event => setMultipleQuery(event.target.value)}
+            ></FormTextInput>
+            <FormTextInput
+              _iconName="users"
+              _placeHolder="Quantity"
+              _inputType="number"
+              _onChange={event => setMultipleQuantity(event.target.value)}
+            ></FormTextInput>
+            {scrapeMultipleProfileApi.isLoading && (
+              <FormText
+                _text="Scraping...Please Wait..."
+                _variant="info"
+              ></FormText>
+            )}
+            {scrapeMultipleProfileApi.error && (
+              <FormText
+                _text="There is a connection error!!!"
                 _variant="danger"
-                _onClick={() => {
-                  $("#multipleModal").modal("show");
-                }}
-                _text="Click here to view"
-              ></FormButton>
-            </>
-          )}
+              ></FormText>
+            )}
+            {scrapeMultipleProfileApi.success &&
+              scrapeMultipleProfileApi.data === null && (
+                <FormText
+                  _text="The tool failed to scrape any data!!!"
+                  _variant="danger"
+                ></FormText>
+              )}
+          </form>
 
-        {/* <>
-          <DownloadLink
-            _href={scrapeSingleProfileApi.downloadUrl}
-            _downnload="single"
-          ></DownloadLink>
           <FormButton
-            _variant="danger"
-            _onClick={() => {
-              $("#multipleModal").modal("show");
-            }}
-            _text="Click here to view"
+            _variant="info"
+            _text="Scrape Test"
+            _onClick={() => $("#multipleModal").modal("show")}
+            _disabled={scrapeMultipleProfileApi.isLoading}
           ></FormButton>
-        </> */}
 
-        <TextFileDownloadModal
+          <FormButton
+            _variant="info"
+            _text="Scrape"
+            _onClick={() =>
+              scrapeMultipleProfileApi.request(multipleQuery, multipleQuantity)
+            }
+            _disabled={scrapeMultipleProfileApi.isLoading}
+          ></FormButton>
+
+          {scrapeMultipleProfileApi.success &&
+            scrapeMultipleProfileApi.data !== null && (
+              <>
+                <FormText
+                  _variant="muted"
+                  _text="Scraping Completed!!!"
+                ></FormText>
+                <div className="row">
+                  <div className="col-6">
+                    <FormDownloadButton
+                      _variant="success"
+                      _href={scrapeMultipleProfileApi.downloadUrl}
+                      _downnload="multiple"
+                      _text="Download JSON"
+                    ></FormDownloadButton>
+                  </div>
+                  <div className="col-6">
+                    <FormButton
+                      _variant="danger"
+                      _onClick={() => {
+                        $("#multipleModal").modal("show");
+                      }}
+                      _text="View"
+                    ></FormButton>
+                  </div>
+                </div>
+
+                {/* <MultipleProfileModal
+                  _id="multipleModal"
+                  _title="Multitple Profile Result"
+                  _downloadUrl={scrapeMultipleProfileApi.downloadUrl}
+                  _downloadName={"multiple"}
+                  _downloadContent={scrapeMultipleProfileApi.data}
+                  // _downloadContent={dummyData}
+                ></MultipleProfileModal>
+                <ModalList
+                  _data={scrapeMultipleProfileApi.data}
+                  // _data={dummyData}
+                ></ModalList> */}
+              </>
+            )}
+        </div>
+        <MultipleProfileModal
           _id="multipleModal"
+          _title="Multitple Profile Result"
           _downloadUrl={scrapeMultipleProfileApi.downloadUrl}
           _downloadName={"multiple"}
-          _downloadContent={
-            <pre>
-              {JSON.stringify(scrapeMultipleProfileApi.data, null, "\t")}
-            </pre>
-          }
-        ></TextFileDownloadModal>
+          // _downloadContent={scrapeMultipleProfileApi.data}
+          _downloadContent={dummyData}
+        ></MultipleProfileModal>
+        <ModalList
+          // _data={scrapeMultipleProfileApi.data}
+          _data={dummyData}
+        ></ModalList>
       </div>
-    </div>
+    </Container>
   );
 };
 

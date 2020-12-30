@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import SearchProfileTable from "./table/SearchProfileTable";
+import SearchProfileTable from "./table/Table";
 import FormHeader from "./form/FormHeader";
 import FormTextInput from "./form/FormTextInput";
 import FormButton from "./form/FormButton";

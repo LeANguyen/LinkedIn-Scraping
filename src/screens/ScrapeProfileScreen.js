@@ -90,14 +90,7 @@ const ScrapeProfileScreen = () => {
 
   return (
     <Screen>
-      <div className="p-lg-5">
-        <div className="p-lg-5 py-5">
-          <ScrapeProfileForm></ScrapeProfileForm>
-        </div>
-        <div className="p-lg-5 py-5">
-          <SearchProfileForm _data={data}></SearchProfileForm>
-        </div>
-      </div>
+      <ScrapeProfileForm></ScrapeProfileForm>
     </Screen>
   );
 };

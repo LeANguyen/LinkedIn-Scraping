@@ -1,5 +1,6 @@
 import React from "react";
 import Header from "../components/Header";
+import Footer from "../components/Footer";
 const Screen = ({ children }) => {
   return (
     <div>
@@ -11,7 +12,7 @@ const Screen = ({ children }) => {
       <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
       <Header></Header>
       {children}
-      {/* <Footer></Footer> */}
+      <Footer></Footer>
     </div>
   );
 };
