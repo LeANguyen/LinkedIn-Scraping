@@ -17,8 +17,8 @@ const Header = () => {
       </button>
 
       <div className="collapse navbar-collapse" id="navbarTogglerDemo03">
-        <ul className="navbar-nav mr-auto my-lg-1 my-2">
-          <li className="nav-item px-2 px-lg-5">
+        <ul className="navbar-nav mr-auto my-2 my-lg-0">
+          <li className="nav-item px-2 px-lg-4">
             <img src={logo} height="40" />
           </li>
 
@@ -138,7 +138,7 @@ const Header = () => {
             aria-label="Search"
           />
           <button
-            className="btn btn-warning my-2 my-sm-0"
+            className="btn btn-warning my-2 my-lg-0"
             type="button"
             onClick={console.log("search()")}
           >

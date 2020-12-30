@@ -4,14 +4,14 @@ import SearchProfileTableItem from "./SearchProfileTableItem";
 import usePagination from "./usePagination";
 import Pagination from "./Pagination";
 
-const SearchProfileTable = ({ _data, _headers = ["Name", "URL", ""] }) => {
+const Table = ({ _data, _headers = ["Name", "URL", ""] }) => {
   const pagination = usePagination(_data);
 
   return (
     <div>
       <div className="table-responsive">
         {_data.length === 0 && (
-          <p className="text-center m-5">There is no data to be displayed!</p>
+          <p className="text-center my-4">There is no data to be displayed!</p>
         )}
         {_data.length !== 0 && (
           <>
@@ -40,4 +40,4 @@ const SearchProfileTable = ({ _data, _headers = ["Name", "URL", ""] }) => {
   );
 };
 
-export default SearchProfileTable;
+export default Table;
