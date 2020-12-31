@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import SingleProfileModal from "./SingleProfileModal";
-
 const SingleProfileModalList = ({ _id, _data }) => {
-  const [downloadURLs, setDownloadUrls] = useState([]);
+  const [downloadUrls, setDownloadUrls] = useState([]);
 
   useEffect(() => {
     const newDownloadURLs = [];
@@ -21,7 +20,7 @@ const SingleProfileModalList = ({ _id, _data }) => {
         return (
           <SingleProfileModal
             _id={_id + i}
-            _downloadUrl={downloadURLs[i]}
+            _downloadUrl={downloadUrls[i]}
             _downloadName={item.name}
             _downloadContent={<pre>{JSON.stringify(item, null, "\t")}</pre>}
             _title={item.name}

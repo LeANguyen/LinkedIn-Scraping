@@ -1,7 +1,6 @@
 import React from "react";
-import ScrapeProfileForm from "../components/ScrapeProfileForm";
+import ScrapeProfileForm from "../components/scrape/form/ScrapeProfileForm";
 import Screen from "../components/Screen";
-import SearchProfileForm from "../components/SearchProfileForm";
 
 const ScrapeProfileScreen = () => {
   const data = [

@@ -1,1 +1,6 @@
 npm install datatables.net-dt # Styling
+npm install react-loader-spinner --save
+
+note these tomorrow:
+- we only use the response in  useApi if we want to do extra handling
+- otherwise use the return value of useApi for conditional rendering

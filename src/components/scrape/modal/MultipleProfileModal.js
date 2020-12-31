@@ -1,6 +1,6 @@
 import React from "react";
-import DataTable from "./table/DataTable";
-import ProfileTableItem from "./table/ProfileTableItem";
+import DataTable from "../../table/DataTable";
+import ProfileTableItem from "../../table/ProfileTableItem";
 
 const MultipleProfileModal = ({
   _id,
