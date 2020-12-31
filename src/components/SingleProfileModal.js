@@ -34,7 +34,7 @@ const SingleProfileModal = ({
 
           <div class="modal-footer">
             <a
-              className="btn btn-success"
+              className="btn btn-info font-weight-bold py-2"
               href={_downloadUrl}
               download={_downloadName}
             >
@@ -42,7 +42,7 @@ const SingleProfileModal = ({
             </a>
             <button
               type="button"
-              class="btn btn-secondary"
+              class="btn btn-secondary font-weight-bold py-2"
               data-dismiss="modal"
             >
               Close

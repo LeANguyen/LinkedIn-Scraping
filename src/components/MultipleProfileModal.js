@@ -19,13 +19,13 @@ const MultipleProfileModal = ({
         aria-labelledby="myLargeModalLabel"
         aria-hidden="true"
       >
-        <div class="modal-dialog mw-100 w-75">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title">{_title}</h5>
+        <div className="modal-dialog mw-100 w-75">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h5 className="modal-title">{_title}</h5>
               <button
                 type="button"
-                class="close"
+                className="close"
                 data-dismiss="modal"
                 aria-label="Close"
               >
@@ -45,7 +45,7 @@ const MultipleProfileModal = ({
                     aria-controls="nav-home"
                     aria-selected="true"
                   >
-                    View All
+                    <strong>View All</strong>
                   </a>
                   <a
                     className="nav-item nav-link"
@@ -56,13 +56,13 @@ const MultipleProfileModal = ({
                     aria-controls="nav-profile"
                     aria-selected="false"
                   >
-                    Select
+                    <strong>Select</strong>
                   </a>
                 </div>
               </nav>
             </div>
 
-            <div class="modal-body modal-multiple">
+            <div className="modal-body modal-multiple">
               <div className="tab-content" id="nav-tabContent">
                 <div
                   className="tab-pane fade show active"
@@ -70,7 +70,7 @@ const MultipleProfileModal = ({
                   role="tabpanel"
                   aria-labelledby="nav-home-tab"
                 >
-                  <pre> {JSON.stringify(_downloadContent, null, "\t")}</pre>
+                  <pre>{JSON.stringify(_downloadContent, null, "\t")}</pre>
                 </div>
                 <div
                   className="tab-pane fade"
@@ -88,9 +88,9 @@ const MultipleProfileModal = ({
               </div>
             </div>
 
-            <div class="modal-footer">
+            <div className="modal-footer">
               <a
-                className="btn btn-success"
+                className="btn btn-info font-weight-bold py-2"
                 href={_downloadUrl}
                 download={_downloadName}
               >
@@ -98,7 +98,7 @@ const MultipleProfileModal = ({
               </a>
               <button
                 type="button"
-                class="btn btn-secondary"
+                className="btn btn-secondary font-weight-bold py-2"
                 data-dismiss="modal"
               >
                 Close
